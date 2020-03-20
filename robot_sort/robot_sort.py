@@ -97,34 +97,43 @@ class SortingRobot:
         Sort the robot's list.
         """
         self.swap_item()
+        # self._position += 1
         #establish that we will be checking every position
-        for i in range(0, len(self._list) - 1): 
-                #if it has reached the end and the index equals the list minus 1
-            if self.can_move_right() == False and i == len(self._list) - 1:
-                    #check the list once more using recursion???
-                self.sort()
-                    #return the completed result
-                return self._list
-               #if it hasn't reached the end
-            elif self.can_move_right():
-                    #move to the right
+        for i in range(1, len(self._list) - 1): 
+        #for position in self._list:
+            #self.swap_item()
+            # print("here0")
+            # print(self._item)
+            print(self._position)
+            if self.can_move_right():
                 self.move_right()
-                    #compare the held item to the item at that position
-                if self.compare_item() == 1:
-                        #the held item has a greater value so swap it with the item at this position
+                
+                if (self.compare_item() == 1):
+                    
                     self.swap_item()
-                        #if the robot can move left then it should move left until it can't anymore (while would be for selection sort- always returning to the beginning, we are just swapping neighbors)
-                    if self.can_move_left(): #changed from while
-                        self.move_left()
-                        #once it has reached the 0th index it should swap the held smaller item to place it at the beginning
-                    self.swap_item()
-                    continue
-                elif self.compare_item() == 0 or self.compare_item()== -1:
-                    if self.can_move_right():
-                        self.move_right()
-                            #compare the items in the same way...should this be a helper function then instead?
-                            #does this break this rule :You may NOT access any instance variables directly. (`self._anything`)
-                        self.sort() #self._list[self._position:]
+                    self.move_right()
+                    # print("here")
+                    # print(self._item)
+                elif (self.compare_item() == 0):
+                    self.move_right()
+                    
+                    # print("here2")
+                    # print(self._item)
+                elif (self.compare_item() == -1):
+                    self.move_right()
+                    
+                    # print("here3")
+                    # print(self._item)
+            else:
+                while self.can_move_left():
+                    self.move_left()
+                self.swap_item()  
+
+                #self.sort()
+                print("here4")
+                print(self._list)  
+                continue #to next element
+            #return self._list
         return self._list
 
 
@@ -204,3 +213,75 @@ if __name__ == "__main__":
     #                         #does this break this rule :You may NOT access any instance variables directly. (`self._anything`)
     #                         sort(self._list[self._position:])
     # #damn, I think actually selection sort would be better for this but I can't capture i+1 as a different variable
+
+
+#attempt at selection sort
+
+        # self.swap_item()
+        # #establish that we will be checking every position
+        # #for i in range(0, len(self._list) - 1): 
+        # for element in self._list:
+        #     if self.compare_item() == 1 and self.can_move_right():
+        #         self.swap_item()
+        #         self.move_right
+        #     elif self.compare_item() == 0 and self.can_move_right(): 
+        #         self.move_right
+        #     elif self.compare_item() == -1 and self.can_move_right(): 
+        #         self.move_right
+        #     else:
+        #         while self.can_move_left():
+        #             self.move_left()
+        #         self.swap_item()    
+        #         continue #to next element
+        #     return self._list
+
+        # # helper function
+        # # continue moving right and checking, swapping only smaller values until reaching the end then start at the next element
+
+        # if self.compare_item() == 1 and self.can_move_right():
+        #     self.swap_item()
+        #     self.move_right
+        # elif self.compare_item() == 0 and self.can_move_right(): 
+        #     self.move_right
+        # elif self.compare_item() == -1 and self.can_move_right(): 
+        #     self.move_right
+        # else:
+        #     while self.can_move_left():
+        #         self.move_left()
+        #     self.swap_item()    
+        #     continue #to next element
+
+
+#there seems to be a problem with starting from 0 because compare_item think position zero is None so going to try from the other direction
+
+        # self.swap_item()
+        # # self._position += 1
+        # #establish that we will be checking every position
+        # for i in range((len(self._list) - 1):0): 
+        # #for position in self._list:
+        #     #self.swap_item()
+        #     print("here0")
+        #     print(self._item)
+            
+        #     if (self.compare_item() == -1) and (self.can_move_left()):
+        #         self.swap_item()
+        #         self.move_left
+        #         print("here")
+        #         print(self._item)
+        #     elif (self.compare_item() == 0) and (self.can_move_left()): 
+        #         self.move_left
+        #         print("here2")
+        #         print(self._item)
+        #     elif (self.compare_item() == 1) and (self.can_move_left()): 
+        #         self.move_left
+        #         print("here3")
+        #         print(self._item)
+        #     else:
+        #         while self.can_move_right():
+        #             self.move_right()
+        #         self.swap_item()  
+        #         print("here4")
+        #         print(self._item)  
+        #         continue #to next element
+        #     # return self._list
+        # return self._list
