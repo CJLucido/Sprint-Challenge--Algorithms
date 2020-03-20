@@ -96,44 +96,59 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        self.swap_item()
+        #self.swap_item()
+        #self._item = self._list[0] causing weird overwriting bugs
         # self._position += 1
         #establish that we will be checking every position
-        for i in range(1, len(self._list) - 1): 
+        for i in range(0, len(self._list) - 1): 
         #for position in self._list:
-            #self.swap_item()
+            self.swap_item()
             # print("here0")
             # print(self._item)
-            print(self._position)
+
             if self.can_move_right():
                 self.move_right()
+                #self.swap_item()
                 
-                if (self.compare_item() == 1):
-                    
-                    self.swap_item()
-                    self.move_right()
-                    # print("here")
-                    # print(self._item)
-                elif (self.compare_item() == 0):
-                    self.move_right()
-                    
-                    # print("here2")
-                    # print(self._item)
-                elif (self.compare_item() == -1):
-                    self.move_right()
-                    
-                    # print("here3")
-                    # print(self._item)
-            else:
-                while self.can_move_left():
-                    self.move_left()
-                self.swap_item()  
 
-                #self.sort()
-                print("here4")
-                print(self._list)  
-                continue #to next element
-            #return self._list
+                
+                while (self.compare_item() == 1) and self.can_move_right():
+                    self.move_right()
+                self.swap_item()
+                   
+                    
+                while self.can_move_left(): # and i < self._position
+                    self.move_left()
+                self.swap_item()
+            
+            print(self._position)
+            print(self._item)   
+                    #continue
+            #         #self.move_right()
+            #         # print("here")
+            #         #print(self._item)
+            #     elif (self.compare_item() == 0):
+            #         self.move_right()
+            #         # print("here2")
+            #         # print(self._item)
+            #     elif (self.compare_item() == -1):
+            #         self.move_right()
+            #         #self.sort()
+
+            #         # print("here3")
+            #         # print(self._item)
+            # else:
+            #     # while self.can_move_left():
+            #     #     self.move_left()
+            #     # self.swap_item()  
+                
+            #     #if 
+            #     #self.sort()
+            #     # print("here4")
+            #     #print(self._list)  
+            #     break #to next element
+            print(self._list)
+            # #return self._list
         return self._list
 
 
