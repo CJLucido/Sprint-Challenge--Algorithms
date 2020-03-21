@@ -97,7 +97,7 @@ class SortingRobot:
         Sort the robot's list.
         """
         #keep the none, go all the way to the end, swap it, go all the way to the beginning and THEN start the process
-
+    #[11, 13, 7, 17, 9, 20, 1, 21, 2, 4, 22, 16, 15, 10, 23, 19, 8, 3, 5, 14, 6, 0, 24, 12, 18]
         for self._position in range(0, len(self._list)):
 
             if self._item == None:#self._position != 0 and
@@ -106,7 +106,7 @@ class SortingRobot:
                 print(self._list)
             print(self.compare_item() == 1)
             while self.can_move_right():
-                self.move_right()
+                #self.move_right()
                 print("right")
                 if ((self.compare_item() == 1) or (self.compare_item() == 0)):
                     self.swap_item()
