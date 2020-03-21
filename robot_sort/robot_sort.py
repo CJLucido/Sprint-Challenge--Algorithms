@@ -104,18 +104,23 @@ class SortingRobot:
                 self.move_right()
                 print(self._list)
             print(self.compare_item() == 1)
-            while self.can_move_right() and (self.compare_item() == 1):
+            while self.can_move_right():
                 self.move_right()
                 print("right")
+                if ((self.compare_item() == 1) or (self.compare_item() == 0)):
+                    self.swap_item()
+                    self.move_right()
+                    continue
+                elif (self.compare_item() == -1):
+                    self.move_right()
+                    # self.swap_item()  
+                    print(self._list)  
+                    continue
 
-            if (self.compare_item() == -1):
-                self.move_left()
-                self.swap_item()  
-                print(self._list)   
-
+            #otherwise it can't move right so it reached the end, if the end is smaller then swap it
             if (self.compare_item() == 1):
-                self.swap_item()
-                print(self._list)
+                    self.swap_item()
+                    print(self._list)
             
                         
             while self.can_move_left() and self._list[self._position] != None: # and i < self._position
@@ -279,4 +284,40 @@ if __name__ == "__main__":
         #         print(self._item)  
         #         continue #to next element
         #     # return self._list
+        # return self._list
+
+        # WORKS FOR SMALL ARRAYS
+        
+        # for self._position in range(0, len(self._list)):
+
+        #     if self._item == None:#self._position != 0 and
+        #         self.swap_item()
+        #         self.move_right()
+        #         print(self._list)
+        #     print(self.compare_item() == 1)
+        #     while self.can_move_right() and ((self.compare_item() == 1) or (self.compare_item() == 0)):
+        #         self.move_right()
+        #         print("right")
+
+        #     if (self.compare_item() == -1):
+        #         self.move_left()
+        #         self.swap_item()  
+        #         print(self._list)   
+
+        #     if (self.compare_item() == 1):
+        #         self.swap_item()
+        #         print(self._list)
+            
+                        
+        #     while self.can_move_left() and self._list[self._position] != None: # and i < self._position
+        #         self.move_left()
+        #             #i+=1
+        #     self.swap_item()
+        #     print(self._list)
+        # # if None in self._list:           
+        # #     self.swap_item()
+        
+        # print(self._position)
+        # print(self._list)
+
         # return self._list
