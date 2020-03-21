@@ -96,6 +96,7 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
+        #keep the none, go all the way to the end, swap it, go all the way to the beginning and THEN start the process
 
         for self._position in range(0, len(self._list)):
 
